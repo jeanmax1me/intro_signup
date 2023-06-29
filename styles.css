@@ -155,6 +155,43 @@ body {
   box-shadow: 0px 4px 0px 0px rgba(66, 177, 130, 0.84);
 }
 
+@media (min-width: 1024px) {
+  .container {
+    display: flex;
+  }
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 160px;
+  }
+  .left .mainheader {
+    padding-right: 150px;
+    font-size: 2.73rem;
+    padding-top: 2.3rem;
+    line-height: 1.1;
+  }
+  .left .maintext {
+    text-align: left;
+    padding-right: 74px;
+    font-size: 0.9rem;
+  }
+  .right {
+    padding-right: 166px;
+    flex: 1;
+    padding-top: 30px;
+  }
+  .buttonpurple .brmobile {
+    display: inline;
+  }
+  .buttonpurple {
+    max-height: 60px;
+    display: flex;
+    flex-direction: row;
+  }
+}
 body {
   font-size: 16px;
   font-family: "Poppins", sans-serif;
