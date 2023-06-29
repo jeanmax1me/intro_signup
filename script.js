@@ -78,7 +78,7 @@ function removeErrorMessage(input) {
   }
 }
 
-// Function to validate email format
+// Function to validate the conformity of the email format 
 function isValidEmail(email) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
