@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Intro component with sign up form</title>
+
+  </head>
+
+  <body>
+    <header>
+      <h1 class="mainheader">Learn to code by watching others</h1>
+    </header>
+
+    <main>
+      <section>
+        <p class="maintext">
+          See how experienced developers solve problems in real-time. Watching
+          scripted tutorials is great, but understanding how developers think is
+          invaluable.
+        </p>
+
+        <div class="buttonpurple">
+          <p class="buttontext">
+            <span class="boldtext">Try it free 7 days</span> then<span class="brmobile"></span> $20/mo.
+            thereafter
+          </p>
+        </div>
+      </section>
+      <section class="mainform">
+        <form>
+          <div class="form-field">
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              required
+              placeholder="First Name"
+            />
+          </div>
+
+          <div class="form-field">
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              required
+              placeholder="Last Name"
+            />
+          </div>
+
+          <div class="form-field">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="Email Address"
+            />
+          </div>
+
+          <div class="form-field">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              placeholder="Password"
+            />
+          </div>
+          <div class="whitebutton" id="submitButton">Claim your free trial</div>
+
+          <p class="outro">
+            By clicking the button, you are agreeing to our <span class="redtext">Terms and Services</span>
+          </p>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="https://www.frontendmentor.io/profile/jeanmax1me">jeanmax1me</a>.
+      </p>
+    </footer>
+    <script src="script.js"></script>
+
+  </body>
+</html>
