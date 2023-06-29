@@ -1,85 +1,62 @@
-// Get a reference to the form
-const form = document.querySelector("form");
+// Get form elements
+const form = document.querySelector('form');
+const firstNameInput = document.getElementById('firstName');
+const lastNameInput = document.getElementById('lastName');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const submitButton = document.getElementById('submitButton');
+const errorMessages = document.getElementsByClassName('error-message');
 
-// Get a reference to the submit button div
-const submitButton = document.getElementById("submitButton");
+// Add event listener to the submit button
+submitButton.addEventListener('click', (event) => {
+  event.preventDefault(); // Prevent form submission
 
-// Add click event listener to the submit button
-submitButton.addEventListener("click", function(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
+  // Remove existing error messages
+  removeErrorMessages();
 
-  // Validate the form fields
-  if (validateForm()) {
-    form.submit(); // Submit the form if it's valid
+  // Check if any field is empty
+  if (isEmpty(firstNameInput.value)) {
+    displayErrorMessage(firstNameInput, 'First Name cannot be empty');
+  }
+
+  if (isEmpty(lastNameInput.value)) {
+    displayErrorMessage(lastNameInput, 'Last Name cannot be empty');
+  }
+
+  // Check email format
+  if (!isValidEmail(emailInput.value)) {
+    displayErrorMessage(emailInput, 'Looks like this is not an email');
+  }
+
+  // Check if any error message is displayed
+  if (errorMessages.length === 0) {
+    form.submit(); // Submit the form if no errors
   }
 });
 
-// Function to validate the form fields
-function validateForm() {
-  let isValid = true;
-
-  // Validate each form field
-  const firstNameInput = document.getElementById("firstName");
-  const lastNameInput = document.getElementById("lastName");
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-
-  // Check if any input field is empty
-  if (firstNameInput.value.trim() === "") {
-    displayErrorMessage(firstNameInput, "First Name cannot be empty");
-    isValid = false;
-  } else {
-    removeErrorMessage(firstNameInput);
-  }
-
-  if (lastNameInput.value.trim() === "") {
-    displayErrorMessage(lastNameInput, "Last Name cannot be empty");
-    isValid = false;
-  } else {
-    removeErrorMessage(lastNameInput);
-  }
-
-  if (emailInput.value.trim() === "") {
-    displayErrorMessage(emailInput, "Email Address cannot be empty");
-    isValid = false;
-  } else if (!isValidEmail(emailInput.value.trim())) {
-    displayErrorMessage(emailInput, "Looks like this is not an email");
-    isValid = false;
-  } else {
-    removeErrorMessage(emailInput);
-  }
-
-  if (passwordInput.value.trim() === "") {
-    displayErrorMessage(passwordInput, "Password cannot be empty");
-    isValid = false;
-  } else {
-    removeErrorMessage(passwordInput);
-  }
-
-  return isValid;
+// Function to check if a field is empty
+function isEmpty(value) {
+  return value.trim() === '';
 }
 
-// Function to display error message for a specific input field
-function displayErrorMessage(input, message) {
-  const errorElement = document.createElement("p");
-  errorElement.className = "error-message";
-  errorElement.textContent = message;
-
-  const formField = input.parentElement;
-  formField.appendChild(errorElement);
-}
-
-// Function to remove error message for a specific input field
-function removeErrorMessage(input) {
-  const formField = input.parentElement;
-  const errorElement = formField.querySelector(".error-message");
-  if (errorElement) {
-    formField.removeChild(errorElement);
-  }
-}
-
-// Function to validate the conformity of the email format 
+// Function to check email format
 function isValidEmail(email) {
+  // Regular expression for email validation
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
+}
+
+// Function to display error message
+function displayErrorMessage(inputElement, message) {
+  const errorMessage = document.createElement('p');
+  errorMessage.classList.add('error-message');
+  errorMessage.textContent = message;
+  inputElement.parentElement.appendChild(errorMessage);
+}
+
+// Function to remove existing error messages
+function removeErrorMessages() {
+  while (errorMessages.length > 0) {
+    errorMessages[0].remove();
+  }
 }
